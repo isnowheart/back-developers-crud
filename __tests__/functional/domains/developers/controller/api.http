@@ -9,9 +9,9 @@ POST http://localhost:3000/developers
 Content-Type: application/json
 
 {
-  "name": "El Bichona Matheus",
-  "gender": "S",
-  "hobby": "Taking shit",
+  "name": "Desenvolvedora",
+  "gender": "f",
+  "hobby": "Ir para a balada",
   "birthdate": "1998-12-25"
 }
 
