@@ -1,0 +1,28 @@
+####
+GET http://localhost:3000/developers
+
+####
+GET http://localhost:3000/developers/2
+
+####
+POST http://localhost:3000/developers
+Content-Type: application/json
+
+{
+  "name": "El Bichona Matheus",
+  "gender": "S",
+  "hobby": "Taking shit",
+  "birthdate": "1998-12-25"
+}
+
+####
+PUT http://localhost:3000/developers/2
+Content-Type: application/json 
+
+{   
+  "gender": "M",
+  "birthdate": "1988-12-25"
+}
+
+####
+DELETE http://localhost:3000/developers/1
