@@ -32,6 +32,8 @@ export default class Provider {
     try {
       const newDeveloper = Developer.create({ ...body });
       newDeveloper.age = calcAge(newDeveloper.birthdate);
+      newDeveloper.gender = newDeveloper.gender.toUpperCase()
+      if(!(newDeveloper.gender === 'M' || newDeveloper.gender === 'F')) throw new BadRequestException('Gender must be F or M.');
       if(newDeveloper.gender.length > 1) throw new BadRequestException('Gender must have just 1 character.');
       await newDeveloper.save();
       return newDeveloper;
@@ -46,6 +48,8 @@ export default class Provider {
     try {
       updateDeveloper.setAttributes(body);
       updateDeveloper.age = calcAge(updateDeveloper.birthdate);
+      updateDeveloper.gender = updateDeveloper.gender.toUpperCase()
+      if(!(updateDeveloper.gender === 'M' || updateDeveloper.gender === 'F')) throw new BadRequestException('Gender must be F or M.');
       if(updateDeveloper.gender.length > 1) throw new BadRequestException('Gender must have just 1 character.');
       await updateDeveloper.save();
       return updateDeveloper;
