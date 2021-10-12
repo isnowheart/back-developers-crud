@@ -9,10 +9,8 @@ import {
   StoreDeveloperParams,
   EditDeveloperParams
 } from './shared/DeveloperParams';
-import calcAge from './shared/DeveloperCalcAge'
 import { Developer } from '../../entities/Developer';
-
-
+import Validation from './shared/Validation'
 @Injectable()
 export default class Provider {
   async index(): Promise<Array<Developer>> {
@@ -32,10 +30,7 @@ export default class Provider {
   async store(body: StoreDeveloperParams): Promise<Developer> {
     try {
       const newDeveloper = Developer.create({ ...body });
-      newDeveloper.age = calcAge(newDeveloper.birthdate);
-      newDeveloper.gender = newDeveloper.gender.toUpperCase()
-      if(!(newDeveloper.gender === 'M' || newDeveloper.gender === 'F')) throw new BadRequestException('Gender must be F or M.');
-      if(newDeveloper.gender.length > 1) throw new BadRequestException('Gender must have just 1 character.');
+      Validation.store(newDeveloper)
       await newDeveloper.save();
       return newDeveloper;
     } catch (e) {
@@ -48,10 +43,7 @@ export default class Provider {
     if (!updateDeveloper) throw new NotFoundException('Developer not found.');
     try {
       updateDeveloper.setAttributes(body);
-      updateDeveloper.age = calcAge(updateDeveloper.birthdate);
-      updateDeveloper.gender = updateDeveloper.gender.toUpperCase()
-      if(!(updateDeveloper.gender === 'M' || updateDeveloper.gender === 'F')) throw new BadRequestException('Gender must be F or M.');
-      if(updateDeveloper.gender.length > 1) throw new BadRequestException('Gender must have just 1 character.');
+      Validation.edit(updateDeveloper)
       await updateDeveloper.save();
       return updateDeveloper;
     } catch (e) {

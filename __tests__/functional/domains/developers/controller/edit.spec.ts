@@ -28,7 +28,7 @@ it('Should update and return Developer', async () => {
     name: faker.name.firstName(),
     gender: 'm'.toUpperCase(),
     hobby: faker.hacker.phrase(),
-    birthdate: faker.date.past(100).toISOString().slice(0, 10),
+    birthdate: faker.date.past(100).toISOString().split('T')[0],
   }
   const response = await request(api.getHttpServer()).put(`/developers/${developer.id}`).send(params)
   expect(response.status).toBe(200)

@@ -9,7 +9,7 @@ POST http://localhost:3000/developers
 Content-Type: application/json
 
 {
-  "name": "Desenvolvedora",
+  "name": "",
   "gender": "F",
   "hobby": "Ir para a balada",
   "birthdate": "1998-12-25"
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 {   
   "gender": "M",
-  "birthdate": "1988-12-25"
+  "birthdate": "data hwuiah5"
 }
 
 ####

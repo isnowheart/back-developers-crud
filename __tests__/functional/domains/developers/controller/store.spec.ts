@@ -7,7 +7,7 @@ import { DevelopersController } from  "../../../../../src/domains/developers/Dev
 import ApiFactory from "../../../../factories/ApiFactory"
 import Provider from "../../../../../src/domains/developers/Provider"
 import DeveloperFactory from "../../../../factories/DeveloperFactory"
-import calcAge from '../../../../../src/domains/developers/shared/DeveloperCalcAge'
+import Validation from '../../../../../src/domains/developers/shared/Validation'
 
 let connection:Connection
 let api:INestApplication
@@ -25,10 +25,10 @@ afterAll(async () => {
 })
 
 it('Should return a Developer', async () => {
-  const date = faker.date.past(100).toISOString().slice(0, 10)
+  const date = faker.date.past(100).toISOString().split('T')[0]
   const params = { 
     name: faker.name.firstName(),
-    age: calcAge(date),
+    age: Validation.calcAge(date),
     gender: 'm'.toUpperCase(),
     hobby: faker.hacker.phrase(),
     birthdate: date.slice(0, 10),
@@ -53,7 +53,7 @@ it('Should return a bad request error if not sending a valid gender f/m', async 
   const date = faker.date.past(100).toISOString().slice(0, 10)
   const params = { 
     name: faker.name.firstName(),
-    age: calcAge(date),
+    age: Validation.calcAge(date),
     gender: faker.random.alpha().toUpperCase(),
     hobby: faker.hacker.phrase(),
     birthdate: date.slice(0, 10),
