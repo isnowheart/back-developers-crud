@@ -26,7 +26,7 @@ afterAll(async () => {
 it('Should update and return Developer', async () => {
   const params = { 
     name: faker.name.firstName(),
-    gender: faker.random.alpha().toUpperCase(),
+    gender: 'm'.toUpperCase(),
     hobby: faker.hacker.phrase(),
     birthdate: faker.date.past(100).toISOString().slice(0, 10),
   }

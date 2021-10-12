@@ -7,8 +7,9 @@ import {
 } from '@nestjs/common';
 import {
   StoreDeveloperParams,
-  EditDeveloperParams, calcAge
+  EditDeveloperParams
 } from './shared/DeveloperParams';
+import calcAge from './shared/DeveloperCalcAge'
 import { Developer } from '../../entities/Developer';
 
 

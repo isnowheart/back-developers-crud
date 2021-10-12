@@ -1,6 +1,6 @@
 import { Developer } from "../../src/entities/Developer"
 import * as faker from "faker"
-import { calcAge } from '../../src/domains/developers/shared/DeveloperParams'
+import calcAge from '../../src/domains/developers/shared/DeveloperCalcAge'
 
 type CreateDeveloperParams = {
   name?: string
@@ -15,7 +15,7 @@ async function create(params?:CreateDeveloperParams):Promise<Developer> {
 
   const developer = Developer.create({ 
     name: faker.name.firstName(),
-    gender: faker.random.alpha().toUpperCase(),
+    gender: 'f'.toUpperCase(),
     age: calcAge(date),
     hobby: faker.hacker.phrase(),
     birthdate: date,

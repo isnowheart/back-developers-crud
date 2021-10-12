@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
   "name": "Desenvolvedora",
-  "gender": "f",
+  "gender": "F",
   "hobby": "Ir para a balada",
   "birthdate": "1998-12-25"
 }
