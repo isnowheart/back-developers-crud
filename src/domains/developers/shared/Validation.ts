@@ -30,11 +30,8 @@ export default {
     updateDeveloper.age = this.calcAge(updateDeveloper.birthdate);
     updateDeveloper.gender = updateDeveloper.gender.toUpperCase()
 
-    if(updateDeveloper.name.length == 0 ) throw new BadRequestException('Name is empty.');
     if(typeof updateDeveloper.name !== 'string') throw new BadRequestException('Name must be a string.');
     if(updateDeveloper.gender.length > 1) throw new BadRequestException('Gender must have just 1 character.');
     if(!(updateDeveloper.gender === 'M' || updateDeveloper.gender === 'F')) throw new BadRequestException('Gender must be F or M.');
-    if(updateDeveloper.hobby.length == 0 ) throw new BadRequestException('Hobby is empty.');
-    if(updateDeveloper.birthdate.length == 0 ) throw new BadRequestException('Birth Date is empty.');
   }
 }

@@ -31,7 +31,7 @@ it('Should return a Developer', async () => {
     age: Validation.calcAge(date),
     gender: 'm'.toUpperCase(),
     hobby: faker.hacker.phrase(),
-    birthdate: date.slice(0, 10),
+    birthdate: date.split('T')[0],
   }
   const response = await request(api.getHttpServer()).post('/developers').send(params)
   expect(response.status).toBe(201)
@@ -50,13 +50,13 @@ it('Should return a Developer', async () => {
 })
   
 it('Should return a bad request error if not sending a valid gender f/m', async () => {
-  const date = faker.date.past(100).toISOString().slice(0, 10)
+  const date = faker.date.past(100).toISOString().split('T')[0]
   const params = { 
     name: faker.name.firstName(),
     age: Validation.calcAge(date),
     gender: faker.random.alpha().toUpperCase(),
     hobby: faker.hacker.phrase(),
-    birthdate: date.slice(0, 10),
+    birthdate: date.split('T')[0],
   }
   const response = await request(api.getHttpServer()).post('/developers').send(params)
   expect(response.status).toBe(400)
@@ -77,7 +77,7 @@ it('Should return a bad request error if not sending a valid birth date', async 
     name: faker.name.firstName(),
     gender: faker.name.gender(),
     hobby: faker.hacker.phrase(),
-    birthdate: faker.date.future().toDateString()
+    birthdate: faker.date.future().toISOString().split('T')[0]
   }
   
   const response = await request(api.getHttpServer()).post('/developers').send(params)
@@ -88,7 +88,7 @@ it('Should return a bad request error if not sending a valid birth date', async 
   expect(response.body.response).toEqual(
     expect.objectContaining({
       statusCode: 400,
-      message: 'Birth date must be a valid date.',
+      message: 'Birth date must be a valid date as YYYY-MM-DD.',
       error: 'Bad Request'
     }),
   )

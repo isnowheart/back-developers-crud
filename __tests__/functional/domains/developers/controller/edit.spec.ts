@@ -48,7 +48,7 @@ it('Should return a not found developer error', async () => {
     name: faker.name.firstName(),
     gender: faker.name.gender(),
     hobby: faker.hacker.phrase(),
-    birthdate: faker.date.past(100).toDateString(),
+    birthdate: faker.date.past(100).toISOString().split('T')[0],
   }
   const response = await request(api.getHttpServer()).put(`/developers/${developer.id}123`).send(params)
   expect(response.status).toBe(404)
