@@ -14,7 +14,7 @@ import Validation from './shared/Validation'
 @Injectable()
 export default class Provider {
   async index(): Promise<Array<Developer>> {
-    const developerList = await Developer.find();
+    const developerList = await Developer.find({  order: {id: "ASC"}, });
     return developerList;
   }
 
