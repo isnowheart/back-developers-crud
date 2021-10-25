@@ -7,7 +7,7 @@ Este projeto foi desenvolvido com base nos requisitos do [processo seletivo](htt
 
 Cheque a [página online](https://github.com/isnowheart/frontend-developers-crud) para frontend.
 
-Cheque a [página online](https://github.com/isnowheart/back-developers-crud) para backend.
+Cheque a [página online](https://github.com/isnowheart/backend-developers-crud) para backend.
 ## Tecnologias Utilizadas
  
 Abaixo as tecnologias utilizadas neste projeto.
